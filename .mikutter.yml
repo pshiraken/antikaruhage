@@ -1,0 +1,9 @@
+---
+slug: :antikaruhage
+depends:
+  mikutter: 3.2.2
+  plugin: []
+version: '1.0'
+author: 
+name: antikaruhage
+description: かるはげに対してだめだしします
