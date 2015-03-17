@@ -14,7 +14,7 @@ Plugin.create(:antikaruhage) do
         exptmp = exptmp.gsub(/[\(（][\)）]/,'')
         exptmp = exptmp.gsub(/(https?|ftp):\/\/[\/A-Za-z0-9\.]*/,'')
         if exptmp =~ /^よし|しよう$|します$|では$|いいね/ and m[:created] > DEFINED_TIME and !m.retweet?
-          randtmp = rand(4) + 1
+          randtmp = rand(8) + 1
           case randtmp
           when 1 then
             reply = "だめ"
@@ -24,6 +24,14 @@ Plugin.create(:antikaruhage) do
             reply = "ダメ"
           when 4 then
             reply = "ダメです"
+          when 5 then
+            reply = "だめで～す"
+          when 6 then
+            reply = "だめでーす"
+          when 7 then
+            reply = "ダメで～す"
+          when 8 then
+            reply = "ダメでーす"
           end
           Service.primary.post(:message => "#{"@" + m.user.idname + " " + reply}", :replyto => m)
         end
