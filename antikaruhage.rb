@@ -7,7 +7,7 @@ Plugin.create(:antikaruhage) do
   on_appear do |ms|
     ms.each do |m|
       if m.user.idname == "karubabu" and m[:created] > DEFINED_TIME and !m.retweet?
-        if m.body =~ /^よし|しよう$|します$|では$|するね$|したい$|てみよう$|いいね|してね$|ようね$|ますね$/
+        if m.body =~ /^よし|しよう$|します$|まつｗ$|するね$|したい$|てみよう$|いいね|してね$|ようね$|ますね$|めます$|きます$|^はやく/
           # mentionを弾く
           if m.body !=~ /@[a-zA-Z0-9_]*/
             randtmp = rand(7) + 1
