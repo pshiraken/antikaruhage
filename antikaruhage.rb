@@ -6,15 +6,26 @@ Plugin.create(:antikaruhage) do
   
   on_appear do |ms|
     ms.each do |m|
-      if m.user.idname == "K1N0Sh1T4"
-        exptmp = m.message.to_s
+      if m.user.idname == "karubabu" and m[:created] > DEFINED_TIME and !m.retweet?
+        exptmp = m.to_s
         # @screen_nameを弾く
         exptmp = exptmp.gsub(/@[a-zA-Z0-9_]*/,'')
         # 空の()を弾く
         exptmp = exptmp.gsub(/[\(（][\)）]/,'')
         exptmp = exptmp.gsub(/(https?|ftp):\/\/[\/A-Za-z0-9\.]*/,'')
         if exptmp =~ /^よし|しよう$|します$|では$|いいね/ and m[:created] > DEFINED_TIME and !m.retweet?
-          Service.primary.post(:message => "#{"@karubabu" + ' ' + "だめ"}", :replyto => m)
+          randtmp = rand(4) + 1
+          case randtmp
+          when 1 then
+            reply = "だめ"
+          when 2 then
+            reply = "だめです"
+          when 3 then
+            reply = "ダメ"
+          when 4 then
+            reply = "ダメです"
+          end
+          Service.primary.post(:message => "#{"@" + m.user.idname + " " + reply}", :replyto => m)
         end
       end
     end
