@@ -13,7 +13,7 @@ Plugin.create(:antikaruhage) do
         # 空の()を弾く
         exptmp = exptmp.gsub(/[\(（][\)）]/,'')
         exptmp = exptmp.gsub(/(https?|ftp):\/\/[\/A-Za-z0-9\.]*/,'')
-        if exptmp =~ /^よし|しよう$|します$|では$|するね$|したい$|てみよう$|いいね/ and m[:created] > DEFINED_TIME and !m.retweet?
+        if exptmp =~ /^よし|しよう$|します$|では$|いいね/ and m[:created] > DEFINED_TIME and !m.retweet?
           randtmp = rand(8) + 1
           case randtmp
           when 1 then
